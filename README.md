@@ -1,28 +1,36 @@
-## Usage
+# Terminal
 
-```bash
-$ npm install # or pnpm install or yarn install
+Install dependencies:
+
+```sh
+bun install
 ```
 
-### Learn more on the [Solid Website](https://solidjs.com) and come chat with us on our [Discord](https://discord.com/invite/solidjs)
+Start development server:
 
-## Available Scripts
+```sh
+bun dev
+```
 
-In the project directory, you can run:
+Build server:
 
-### `npm run dev`
+```sh
+bun run build
+```
 
-Runs the app in the development mode.<br>
-Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
+## Commands
 
-### `npm run build`
+- `help`: print list of commands
+- `cv`: download CV
+- `projects`: list projects
+- `history`: history of commands
+- `date`: print today's date and time
+- `donate`: print wallet address for donation
+- `connect`: print list of social media links
+- `clear`: clear lines
+- `history`: show command history
 
-Builds the app for production to the `dist` folder.<br>
-It correctly bundles Solid in production mode and optimizes the build for the best performance.
+## Inspirations
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-## Deployment
-
-Learn more about deploying your application with the [documentations](https://vitejs.dev/guide/static-deploy.html)
+- [Sat Naing](https://terminal.satnaing.dev/)
+- [CSS Tricks](https://css-tricks.com/old-timey-terminal-styling/)

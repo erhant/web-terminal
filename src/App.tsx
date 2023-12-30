@@ -1,74 +1,78 @@
-import { For, createSignal } from "solid-js";
+import { For, Match, Show, Switch, createSignal } from "solid-js";
 import { themeChange } from "theme-change";
-import Code from "./components/Code";
 
 import Prefix from "./components/Prefix";
+import CommandBanner from "./components/commands/Banner";
+import CommandHelp from "./components/commands/Help";
 
 export default function App() {
-  const [commands, setCommands] = createSignal<
-    [command: string, color: string][]
-  >([
-    ["Welcome to my page.", "success"],
-    ["Enter a prompt below.", "success"],
-  ]);
-
-  /**
-   * see: https://terminal.satnaing.dev/
-   * add commands:
-   * - donate
-   * -
-   */
-
-  function processCommand(command: string) {
-    switch (command) {
-      case "clear": {
-        setCommands([]);
-        break;
-      }
-      case "help": {
-        setCommands((cur) => [...cur, ["help\nhelp me", "success"]]);
-        break;
-      }
-      case "🦔": {
-        setCommands((cur) => [...cur, ["🦔\ntis", "success"]]);
-        break;
-      }
-      default:
-        setCommands((cur) => [...cur, [command, "error"]]);
-        break;
-    }
-  }
+  const [commands, setCommands] = createSignal<string[]>(["banner"]);
+  const [history, setHistory] = createSignal<string[]>([""]);
+  let inputRef: HTMLInputElement;
 
   return (
-    <main>
-      <div class="ml-2 mt-2 whitespace-pre-wrap">
+    <main
+      class="flex flex-col h-screen"
+      // focus on input line wherever you click
+      onClick={() => inputRef.focus()}
+    >
+      <div class="mx-2 mt-2 whitespace-pre-wrap">
         {/* history */}
         <For each={commands()}>
-          {([command, color]) => {
-            return (
-              <pre>
-                {/* <Code color={cmd[1]}>{"> "}</Code> */}
-                {/* <code class={textColor()}>{PROMPT}</code> */}
-                <Prefix path="~" success={true} />
-                <code>{command}</code>
-              </pre>
-            );
-          }}
+          {(command) => (
+            <pre>
+              {/* command input printed again */}
+              <Prefix path="~" fail={false} />
+              <code>{command + "\n"}</code>
+
+              {/* command output */}
+              <Switch fallback={<code>{"unknown command: " + command + "\n"}</code>}>
+                <Match when={command === ""}>
+                  <>{/* do nothing */}</>
+                </Match>
+
+                <Match when={command === "banner"}>
+                  <CommandBanner />
+                </Match>
+
+                <Match when={command === "help"}>
+                  <CommandHelp />
+                </Match>
+              </Switch>
+            </pre>
+          )}
         </For>
 
         {/* prompt */}
-        <Prefix path="~" success={true} />
-        <input
-          type="text"
-          id="main-input"
-          class="bg-inherit outline-none"
-          onKeyDown={(e) => {
-            if (e.key === "Enter") {
-              processCommand(e.currentTarget.value);
-              e.currentTarget.value = "";
-            }
-          }}
-        />
+        <div class="flex">
+          <Prefix path="~" />
+          <input
+            // @ts-expect-error
+            ref={inputRef}
+            type="text"
+            id="main-input"
+            class="bg-inherit flex-grow outline-none"
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                const cmd = e.currentTarget.value.toLowerCase();
+
+                setHistory((cur) => [...cur, cmd]);
+
+                if (cmd === "clear") {
+                  setCommands([]);
+                } else if (cmd === "exit") {
+                  window.close();
+                } else if (cmd === "cv") {
+                  window.open("/cv.pdf", "_blank");
+                } else {
+                  setCommands((cur) => [...cur, cmd]);
+                }
+
+                e.currentTarget.value = "";
+              }
+            }}
+          />
+        </div>
       </div>
     </main>
   );

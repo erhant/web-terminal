@@ -8,7 +8,7 @@ export default function Prefix(props: { fail?: boolean; path: string }) {
       <span class="text-primary">{"erhant.me"}</span>
       <span>{":"}</span>
       <span class="text-info">{props.path}</span>
-      <span class="text-secondary font-bold">{" main"}</span>
+      {/* <span class="text-secondary font-bold">{" main"}</span> */}
       <span class={color()}>{" > "}</span>
     </code>
   );

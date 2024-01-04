@@ -2,22 +2,22 @@ import { ProjectType } from "./types";
 
 export const sideProjects: ProjectType[] = [
   {
-    title: "MoonMath Solutions",
+    title: "Moonmath",
     githubURL: "https://github.com/erhant/moonmath",
     content: () => <p>Solutions to a few exercises & code examples for MoontMath Manual to zkSNARKs.</p>,
     tech: ["markdown", "sage"],
   },
   {
     title: "Cryptography Notes",
-    githubURL: "https://crypto.erhant.me",
+    githubURL: "https://github.com/erhant/crypto-notes",
     webURL: "https://crypto.erhant.me",
-    content: () => <p>Various notes related to cryptography, number theory and zero-knowledge.</p>,
-    tech: ["typescript", "markdown", "next"],
+    content: () => <p>Various notes related to cryptography, number theory and zkSNARKs.</p>,
+    tech: ["markdown"],
   },
   {
     title: "Blockchatting",
     githubURL: "https://github.com/erhant/blockchatting",
-    demoURL: "https://blockchatting.vercel.app/",
+    webURL: "https://blockchatting.vercel.app/",
     tech: ["typescript", "next", "react", "solidity"],
     content: () => (
       <p>
@@ -28,9 +28,21 @@ export const sideProjects: ProjectType[] = [
     ),
   },
   {
+    title: "Leet Assistant",
+    githubURL: "https://github.com/erhant/leet-assistant",
+    webURL: "https://leet-assistant.vercel.app/",
+    tech: ["typescript", "solid"],
+    content: () => (
+      <p>
+        A personalized LeetCode assistant, guiding you about problems to solve based on your performance &amp;
+        interests.
+      </p>
+    ),
+  },
+  {
     title: "Simple Block-Explorer",
     githubURL: "https://github.com/erhant/simple-blockexplorer",
-    demoURL: "https://simple-blockexplorer-erhant.vercel.app/",
+    webURL: "https://simple-blockexplorer-erhant.vercel.app/",
     tech: ["typescript", "next"],
     content: () => (
       <p>
@@ -63,28 +75,17 @@ export const sideProjects: ProjectType[] = [
     ),
   },
   {
-    title: "NextJS + Web3 Starter",
-    githubURL: "https://github.com/erhant/nextjs-web3-starter",
-    demoURL: "https://nextjs-web3-starter-erhant.vercel.app/",
-    content: () => (
-      <p>
-        A TypeScript template repository to create decentralized applications using{" "}
-        <a href="https://nextjs.org/">NextJS</a> and <a href="https://hardhat.org/">Hardhat</a>! Has a simple counter
-        contract and an ERC-20 token contract example in it.
-      </p>
-    ),
-    tech: ["typescript", "next", "solidity"],
-  },
-
-  {
     title: "Orca Livecoding",
     githubURL: "https://github.com/erhant/orca-livecoding",
     tech: [],
     content: () => (
       <p>
         Of the various music livecoding programs, I particularly developed an interest in{" "}
-        <a href="https://hundredrabbits.itch.io/orca">Orca</a>, which is a 2-dimensional esoteric programming language.
-        There I've created a fretboard and tab-reader, or musical scale player with it.
+        <a href="https://hundredrabbits.itch.io/orca" target="_blank" class="link link-hover">
+          Orca
+        </a>
+        , which is a 2-dimensional esoteric programming language. There I've created a fretboard and tab-reader, or
+        musical scale player with it.
       </p>
     ),
   },
@@ -95,8 +96,11 @@ export const sideProjects: ProjectType[] = [
     tech: ["python"],
     content: () => (
       <p>
-        My submissions to <a href="https://oeis.org/">Online Encyclopedia of Integer Sequences</a>. One submission in
-        particular has really cool plots which resemble a burning castle, hence the name.
+        My submissions to{" "}
+        <a href="https://oeis.org/" target="_blank" class="link link-hover">
+          Online Encyclopedia of Integer Sequences
+        </a>
+        . One submission in particular has really cool plots which resemble a burning castle, hence the name.
       </p>
     ),
   },
@@ -106,9 +110,8 @@ export const sideProjects: ProjectType[] = [
     tech: ["python"],
     content: () => (
       <p>
-        Using <code>matplotlib</code>, I have drawn a{" "}
-        <a href="https://en.wikipedia.org/wiki/Circle_of_fifths">Circle of Fifths</a>, a fretboard, and a piano
-        keyboard; with highlights on certain notes based on a scale or chord.
+        <a href="https://en.wikipedia.org/wiki/Circle_of_fifths">Circle of Fifths</a>, fretboard, and a piano keyboard,
+        all with highlights on certain notes based on a scale or chord, using <kbd>matplotlib</kbd>!
       </p>
     ),
   },

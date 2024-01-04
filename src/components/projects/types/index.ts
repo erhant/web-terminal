@@ -2,8 +2,7 @@ import type { JSXElement } from "solid-js";
 
 export type ProjectType = {
   title: string;
-  githubURL?: string;
-  demoURL?: string;
+  githubURL: string;
   paperURL?: string;
   webURL?: string;
   npm?: string;

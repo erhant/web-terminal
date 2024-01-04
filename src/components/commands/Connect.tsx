@@ -2,8 +2,8 @@ import { For } from "solid-js";
 
 const connections = {
   github: "https://github.com/erhant",
-  linkedin: "https://www.linkedin.com/in/erhan-tezcan/",
   twitter: "https://www.x.com/0xerhant/",
+  linkedin: "https://www.linkedin.com/in/erhan-tezcan/",
 };
 
 export default function CommandHelp() {

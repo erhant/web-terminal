@@ -6,16 +6,15 @@ import { allCommands, basicCommands, silentCommands, themes } from "./constants"
 
 // command-specific components
 import CommandAbout from "./components/commands/About";
-import CommandWelcome from "./components/commands/Welcome";
 import CommandHelp from "./components/commands/Help";
 import CommandConnect from "./components/commands/Connect";
 import CommandProjects from "./components/commands/Projects";
 import CommandPapers from "./components/commands/Papers";
 import CommandTheme from "./components/commands/Theme";
+import Input from "./components/Input";
 
 const basics: Record<(typeof basicCommands)[number], () => JSXElement> = {
   about: CommandAbout,
-  welcome: CommandWelcome,
   help: CommandHelp,
   connect: CommandConnect,
   projects: CommandProjects,
@@ -24,15 +23,18 @@ const basics: Record<(typeof basicCommands)[number], () => JSXElement> = {
 };
 
 export default function App() {
-  const [commands, setCommands] = createSignal<string[]>(["welcome"]);
+  const [commands, setCommands] = createSignal<string[]>(["help"]);
   const [theme, setTheme] = createSignal(localStorage.getItem("theme") || "dark");
-  let inputRef: HTMLInputElement;
-  let mainRef: HTMLElement;
+
+  // see: https://stackoverflow.com/questions/76671464/how-to-use-ref-in-solid-js
+  let inputRef: HTMLInputElement | undefined;
+  let mainRef: HTMLElement | undefined;
 
   // update theme
   createEffect(() => {
     localStorage.setItem("theme", theme());
-    mainRef.setAttribute("data-theme", theme());
+
+    if (mainRef) mainRef.setAttribute("data-theme", theme());
   });
 
   // https://github.com/saadeghi/theme-change?tab=readme-ov-file#js
@@ -41,7 +43,6 @@ export default function App() {
   });
 
   function processCommand(cmd: string) {
-    cmd = cmd.trim();
     setCommands((cur) => [...cur, cmd]);
 
     if (cmd === "clear") {
@@ -61,9 +62,8 @@ export default function App() {
       // reverse so that it always scrolls to the bottom
       class="flex flex-col-reverse h-screen overflow-scroll"
       // focus on input line wherever you click
-      onClick={() => inputRef.focus()}
-      // @ts-expect-error
-      ref={mainRef}
+      onClick={() => inputRef && inputRef.focus()}
+      ref={(ref) => (mainRef = ref)}
     >
       <div class="p-2 whitespace-pre-wrap text-wrap">
         {/* print commands */}
@@ -95,22 +95,7 @@ export default function App() {
         </For>
 
         {/* prompt */}
-        <div class="flex">
-          <Prefix path="~" />
-          <input
-            // @ts-expect-error
-            ref={inputRef}
-            type="text"
-            id="main-input"
-            class="bg-inherit flex-grow outline-none"
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                processCommand(e.currentTarget.value.toLowerCase());
-                e.currentTarget.value = "";
-              }
-            }}
-          />
-        </div>
+        <Input handleCommand={processCommand} takeInputRef={(ref) => (inputRef = ref)} />
       </div>
     </main>
   );

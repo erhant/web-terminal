@@ -1,5 +1,5 @@
 /** An array of basic commands. */
-export const basicCommands = ["welcome", "help", "about", "connect", "projects", "papers", "theme"] as const;
+export const basicCommands = ["help", "about", "connect", "projects", "papers", "theme"] as const;
 
 /** An array of ignored commands. */
 export const silentCommands = ["", "clear", "cv"] as const;

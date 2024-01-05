@@ -3,7 +3,6 @@ import { allCommands } from "../../constants";
 
 const helps: Record<Exclude<(typeof allCommands)[number], "">, string> = {
   about: "About me.",
-  welcome: "Print the welcome message.",
   clear: "Clear the terminal",
   help: "Print this help message.",
   cv: "Open resume (curriculum vitae).",

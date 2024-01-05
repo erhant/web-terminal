@@ -10,12 +10,13 @@ export default function CommandPapers() {
             {"\n"}
             <span class="text-primary font-medium">{paper.title}</span>
             {" ("}
-            <a class="link link-hover text-success" href={paper.paperURL}>
-              paper
-            </a>
-            {" | "}
-            <a class="link link-hover text-error" href={paper.githubURL}>
+            <a class="link link-hover text-success" href={paper.githubURL}>
               code
+            </a>
+
+            {" | "}
+            <a class="link link-hover text-info" href={paper.paperURL}>
+              paper
             </a>
             {")"}
             {paper.content()}

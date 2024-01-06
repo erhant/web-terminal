@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
-import solid from "vite-plugin-solid";
-import vercel from "vite-plugin-vercel";
+import solid from "solid-start/vite";
+import vercel from "solid-start-vercel";
 
 export default defineConfig({
-  plugins: [solid(), vercel()],
+  plugins: [solid({ adapter: vercel() })],
 });

@@ -1,21 +1,21 @@
 import { For, Switch, createEffect, createSignal, onMount } from "solid-js";
 import { themeChange } from "theme-change";
 
-import { themes } from "./constants";
+import { themes } from "../constants";
 
-import Input from "./components/Input";
-import Unknown from "./components/Unknown";
+import Input from "../components/Input";
+import Unknown from "../components/Unknown";
 
-import CommandAbout from "./components/commands/About";
-import CommandHelp from "./components/commands/Help";
-import CommandProjects from "./components/commands/Projects";
-import CommandPapers from "./components/commands/Papers";
-import CommandTheme from "./components/commands/Theme";
-import CommandEmpty from "./components/commands/Empty";
-import CommandCV from "./components/commands/CV";
-import CommandDate from "./components/commands/Date";
-import CommandGehog from "./components/commands/Gehog";
-import CommandEcho from "./components/commands/Echo";
+import CommandAbout from "../components/commands/About";
+import CommandHelp from "../components/commands/Help";
+import CommandProjects from "../components/commands/Projects";
+import CommandPapers from "../components/commands/Papers";
+import CommandTheme from "../components/commands/Theme";
+import CommandEmpty from "../components/commands/Empty";
+import CommandCV from "../components/commands/CV";
+import CommandDate from "../components/commands/Date";
+import CommandGehog from "../components/commands/Gehog";
+import CommandEcho from "../components/commands/Echo";
 
 export default function App() {
   const [commands, setCommands] = createSignal<string[]>(["help"]);

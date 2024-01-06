@@ -12,7 +12,7 @@ export default function CommandAbout(props: { cmd: string }) {
   return (
     <Match when={props.cmd === "about"}>
       <Prefix cmd={props.cmd} />
-      <pre>
+      <pre class="text-wrap">
         <code>{`
 I'm a Full-Stack Blockchain Developer from Istanbul, Turkey. 
 I build & engineer computer software; driven by a thirst for knowledge and with respect to standards, security and scalability.

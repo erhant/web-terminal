@@ -13,8 +13,8 @@ export default function Prefix(props: { fail?: boolean; path?: string; cmd?: str
       <span class={promptColor()}>{" > "}</span>
       <Show when={props.cmd !== undefined}>
         <span>{props.cmd}</span>
+        {"\n"}
       </Show>
-      {"\n"}
     </code>
   );
 }

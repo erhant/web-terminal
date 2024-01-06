@@ -11,7 +11,7 @@ export default function Input(props: {
         ref={(ref) => props.takeInputRef(ref)}
         type="text"
         id="main-input"
-        class="bg-inherit flex-grow outline-none"
+        class="bg-inherit flex-grow outline-none overflow-hidden"
         onKeyDown={(e) => {
           if (e.key === "Enter") {
             const cmd = e.currentTarget.value.toLowerCase().trim();

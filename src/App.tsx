@@ -15,6 +15,7 @@ import CommandEmpty from "./components/commands/Empty";
 import CommandCV from "./components/commands/CV";
 import CommandDate from "./components/commands/Date";
 import CommandGehog from "./components/commands/Gehog";
+import CommandEcho from "./components/commands/Echo";
 
 export default function App() {
   const [commands, setCommands] = createSignal<string[]>(["help"]);
@@ -75,6 +76,7 @@ export default function App() {
               <CommandPapers cmd={command} />
               <CommandDate cmd={command} />
               <CommandGehog cmd={command} />
+              <CommandEcho cmd={command} />
             </Switch>
           )}
         </For>

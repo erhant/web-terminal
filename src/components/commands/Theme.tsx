@@ -11,8 +11,10 @@ export default function CommandTheme(props: { cmd: string }) {
       <Show when={props.cmd === "theme"}>
         <pre>
           <code>{"To change the theme, type:\n\n\ttheme <name>\n\n"}</code>
-          <code>{"Available themes:\n"}</code>
-          <For each={themes}>{(theme) => <span class="text-secondary font-bold">{"\n\t" + theme}</span>}</For>
+          <code>{"Available themes:"}</code>
+          <br />
+          <code class="text-secondary font-bold text-wrap">{themes.join(" ")}</code>
+          {/* <For each={themes}>{(theme) => <span class=text-secondary font-bold">{"\n\t" + theme}</span>}</For> */}
           {"\n\n"}
         </pre>
       </Show>

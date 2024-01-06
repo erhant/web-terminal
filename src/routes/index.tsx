@@ -12,7 +12,7 @@ import CommandProjects from "../components/commands/Projects";
 import CommandPapers from "../components/commands/Papers";
 import CommandTheme from "../components/commands/Theme";
 import CommandEmpty from "../components/commands/Empty";
-import CommandCV from "../components/commands/CV";
+import CommandCV from "../components/commands/Cv";
 import CommandDate from "../components/commands/Date";
 import CommandGehog from "../components/commands/Gehog";
 import CommandEcho from "../components/commands/Echo";

@@ -28,7 +28,7 @@ export default function CommandHelp(props: { cmd: string }) {
             </code>
           )}
         </For>
-        {"\n\n\n"}
+        {"\n\n"}
       </pre>
     </Match>
   );

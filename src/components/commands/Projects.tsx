@@ -1,7 +1,14 @@
 import { For, Match, Show } from "solid-js";
-import { type ProjectType, activeProjects, schoolProjects, sideProjects, thesisProjects } from "../../contents";
+import {
+  type ProjectType,
+  activeProjects,
+  schoolProjects,
+  sideProjects,
+  thesisProjects,
+  challengeProjects,
+  hackathonProjects,
+} from "../../contents";
 import Prefix from "../Prefix";
-import { challengeProjects } from "../../contents/projects/challenges";
 
 const projects: Record<string, { projects: ProjectType[]; desc: string }> = {
   active: {
@@ -23,6 +30,10 @@ const projects: Record<string, { projects: ProjectType[]; desc: string }> = {
   challenge: {
     projects: challengeProjects,
     desc: "CTFs & puzzles solutions.",
+  },
+  hackathon: {
+    projects: hackathonProjects,
+    desc: "Hackathon projects.",
   },
 };
 
@@ -70,8 +81,8 @@ export default function CommandProjects(props: { cmd: string }) {
           <For each={Object.entries(projects)}>
             {([category, { desc }]) => (
               <code>
-                <span class="text-secondary font-bold">{"\t" + category.padEnd(10, " ")}</span>
-                <span>{desc}</span>
+                <span class="text-secondary font-bold">{"\t" + category.padEnd(12, " ")}</span>
+                <code class="text-wrap">{desc}</code>
                 <br />
               </code>
             )}

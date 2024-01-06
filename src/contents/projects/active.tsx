@@ -1,4 +1,4 @@
-import { ProjectType } from "../types";
+import type { ProjectType } from "../types";
 
 const FirstBatch = () => (
   <a href="https://www.firstbatch.xyz/" target="_blank" class="link link-hover">

@@ -1,10 +1,6 @@
 import { Show } from "solid-js";
 
-export default function Prefix(props: {
-  fail?: boolean;
-  path?: string;
-  cmd?: string;
-}) {
+export default function Prefix(props: { fail?: boolean; path?: string; cmd?: string }) {
   const promptColor = () => (props.fail ? "text-error" : "text-success");
 
   return (

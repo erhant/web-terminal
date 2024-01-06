@@ -13,9 +13,7 @@ export default function CommandTheme(props: { cmd: string }) {
           <code>{"To change the theme, type:\n\n\ttheme <name>\n\n"}</code>
           <code>{"Available themes:"}</code>
           <br />
-          <code class="text-secondary font-bold text-wrap">
-            {themes.join(" ")}
-          </code>
+          <code class="text-secondary font-bold text-wrap">{themes.join(" ")}</code>
           {"\n\n"}
         </pre>
       </Show>

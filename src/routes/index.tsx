@@ -19,7 +19,7 @@ import CommandEcho from "../components/commands/Echo";
 
 export default function App() {
   const [commands, setCommands] = createSignal<string[]>(["help"]);
-  const [theme, setTheme] = createSignal(localStorage.getItem("theme") || "dark");
+  const [theme, setTheme] = createSignal("dark");
 
   // see: https://stackoverflow.com/questions/76671464/how-to-use-ref-in-solid-js
   let inputRef: HTMLInputElement | undefined;
@@ -27,8 +27,9 @@ export default function App() {
 
   // update theme
   createEffect(() => {
-    localStorage.setItem("theme", theme());
-
+    if (window) {
+      // localStorage.setItem("theme", theme());
+    }
     if (mainRef) {
       mainRef.setAttribute("data-theme", theme());
     }

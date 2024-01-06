@@ -7,19 +7,19 @@ A terminal-like portfolio page, so that I don't worry about my bad UI designs.
 Install dependencies:
 
 ```sh
-bun install
+pnpm install
 ```
 
 Start development server:
 
 ```sh
-bun dev
+pnpm dev
 ```
 
 Build server:
 
 ```sh
-bun run build
+pnpm run build
 ```
 
 ## Inspirations

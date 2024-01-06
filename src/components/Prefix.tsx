@@ -1,4 +1,6 @@
-export default function Prefix(props: { fail?: boolean; path: string }) {
+import { Show } from "solid-js";
+
+export default function Prefix(props: { fail?: boolean; path?: string; cmd?: string }) {
   const promptColor = () => (props.fail ? "text-error" : "text-success");
 
   return (
@@ -7,8 +9,12 @@ export default function Prefix(props: { fail?: boolean; path: string }) {
       <span>{"@"}</span>
       <span class="text-primary">erhant.me</span>
       <span>{":"}</span>
-      <span class="text-info">{props.path}</span>
+      <span class="text-info">{props.path || "~"}</span>
       <span class={promptColor()}>{" > "}</span>
+      <Show when={props.cmd !== undefined}>
+        <span>{props.cmd}</span>
+      </Show>
+      {"\n"}
     </code>
   );
 }

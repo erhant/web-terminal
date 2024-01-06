@@ -1,26 +1,18 @@
-import { For, JSXElement, Match, Switch, createEffect, createSignal, onMount } from "solid-js";
+import { For, Switch, createEffect, createSignal, onMount } from "solid-js";
 import { themeChange } from "theme-change";
 
-import Prefix from "./components/Prefix";
-import { allCommands, basicCommands, silentCommands, themes } from "./constants";
+import { themes } from "./constants";
 
-// command-specific components
+import Input from "./components/Input";
 import CommandAbout from "./components/commands/About";
 import CommandHelp from "./components/commands/Help";
 import CommandConnect from "./components/commands/Connect";
 import CommandProjects from "./components/commands/Projects";
 import CommandPapers from "./components/commands/Papers";
 import CommandTheme from "./components/commands/Theme";
-import Input from "./components/Input";
-
-const basics: Record<(typeof basicCommands)[number], () => JSXElement> = {
-  about: CommandAbout,
-  help: CommandHelp,
-  connect: CommandConnect,
-  projects: CommandProjects,
-  papers: CommandPapers,
-  theme: CommandTheme,
-};
+import CommandEmpty from "./components/commands/Empty";
+import CommandCV from "./components/commands/Cv";
+import CommandUnknown from "./components/commands/Unknown";
 
 export default function App() {
   const [commands, setCommands] = createSignal<string[]>(["help"]);
@@ -34,7 +26,9 @@ export default function App() {
   createEffect(() => {
     localStorage.setItem("theme", theme());
 
-    if (mainRef) mainRef.setAttribute("data-theme", theme());
+    if (mainRef) {
+      mainRef.setAttribute("data-theme", theme());
+    }
   });
 
   // https://github.com/saadeghi/theme-change?tab=readme-ov-file#js
@@ -69,28 +63,16 @@ export default function App() {
         {/* print commands */}
         <For each={commands()}>
           {(command) => (
-            <pre>
-              {/* command input */}
-              <Prefix path="~" fail={!allCommands.includes(command as any)} />
-              <code>{command + "\n"}</code>
-
-              {/* command output */}
-              <Switch fallback={<code>{"unknown command: " + command + "\n"}</code>}>
-                {/* silent commands */}
-                <Match when={silentCommands.includes(command as (typeof silentCommands)[number])}>
-                  <>{/* do nothing */}</>
-                </Match>
-
-                <Match when={command.startsWith("theme") && themes.includes(command.slice("theme ".length))}>
-                  <>{/* do nothing on theme change */}</>
-                </Match>
-
-                {/* basic commands */}
-                <For each={Object.entries(basics)}>
-                  {(basicCommand) => <Match when={command === basicCommand[0]}>{basicCommand[1]()}</Match>}
-                </For>
-              </Switch>
-            </pre>
+            <Switch fallback={<CommandUnknown cmd={command} />}>
+              <CommandAbout cmd={command} />
+              <CommandConnect cmd={command} />
+              <CommandHelp cmd={command} />
+              <CommandEmpty cmd={command} />
+              <CommandCV cmd={command} />
+              <CommandPapers cmd={command} />
+              <CommandProjects cmd={command} />
+              <CommandTheme cmd={command} />
+            </Switch>
           )}
         </For>
 

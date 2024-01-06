@@ -1,4 +1,4 @@
-import { ProjectType } from "./types";
+import { ProjectType } from "../types";
 
 export const publications: (ProjectType & { paperURL: string; githubURL: string })[] = [
   {

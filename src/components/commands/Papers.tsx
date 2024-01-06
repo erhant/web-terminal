@@ -1,29 +1,33 @@
-import { For } from "solid-js";
-import { publications } from "../projects";
+import { For, Match } from "solid-js";
+import { publications } from "../../contents/projects";
+import Prefix from "../Prefix";
 
-export default function CommandPapers() {
+export default function CommandPapers(props: { cmd: string }) {
   return (
-    <pre>
-      <For each={publications}>
-        {(paper) => (
-          <code class="text-wrap">
-            {"\n"}
-            <span class="text-primary font-medium">{paper.title}</span>
-            {" ("}
-            <a class="link link-hover text-success" href={paper.githubURL}>
-              code
-            </a>
+    <Match when={props.cmd === "papers"}>
+      <Prefix cmd={props.cmd} />
+      <pre>
+        <For each={publications}>
+          {(paper) => (
+            <code class="text-wrap">
+              {"\n"}
+              <span class="text-primary font-medium">{paper.title}</span>
+              {" ("}
+              <a class="link link-hover text-success" href={paper.githubURL}>
+                code
+              </a>
 
-            {" | "}
-            <a class="link link-hover text-info" href={paper.paperURL}>
-              paper
-            </a>
-            {")"}
-            {paper.content()}
-          </code>
-        )}
-      </For>
-      {"\n\n"}
-    </pre>
+              {" | "}
+              <a class="link link-hover text-info" href={paper.paperURL}>
+                paper
+              </a>
+              {")"}
+              {paper.content()}
+            </code>
+          )}
+        </For>
+        {"\n\n"}
+      </pre>
+    </Match>
   );
 }

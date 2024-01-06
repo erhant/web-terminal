@@ -1,4 +1,4 @@
-import { For, Match, Show } from "solid-js";
+import { Match, Show } from "solid-js";
 import { themes } from "../../constants";
 import Prefix from "../Prefix";
 

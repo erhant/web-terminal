@@ -1,33 +1,28 @@
 {
-  "name": "terminal",
+  "name": "web-terminal",
   "private": true,
-  "license": "MIT",
+  "author": "erhant",
   "type": "module",
   "scripts": {
-    "dev": "solid-start dev",
-    "build": "solid-start build",
-    "start": "solid-start start"
+    "dev": "vinxi dev",
+    "build": "vinxi build",
+    "start": "vinxi start"
   },
   "dependencies": {
     "@fontsource/ibm-plex-mono": "^5.0.8",
-    "@solidjs/meta": "^0.29.3",
     "@solidjs/router": "^0.10.6",
-    "solid-js": "^1.8.7",
-    "solid-start": "^0.3.10",
-    "solid-start-vercel": "^0.3.10",
-    "theme-change": "^2.5.0"
-  },
-  "devDependencies": {
+    "@solidjs/start": "^0.4.4",
     "@tailwindcss/typography": "^0.5.10",
-    "autoprefixer": "^10.4.16",
-    "daisyui": "latest",
-    "postcss": "^8.4.32",
-    "solid-start-node": "^0.3.10",
-    "tailwindcss": "^3.4.0",
-    "typescript": "^5.2.2",
-    "vite": "^5.0.8"
+    "autoprefixer": "^10.4.14",
+    "daisyui": "^4.5.0",
+    "postcss": "^8.4.26",
+    "solid-js": "^1.8.8",
+    "solid-start-vercel": "^0.3.10",
+    "tailwindcss": "^3.3.3",
+    "theme-change": "^2.5.0",
+    "vinxi": "0.1.1"
   },
-  "prettier": {
-    "printWidth": 120
+  "engines": {
+    "node": ">=18"
   }
 }

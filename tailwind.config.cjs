@@ -1,10 +1,8 @@
-const daisyui = require("daisyui");
-const typography = require("@tailwindcss/typography");
 const defaults = require("tailwindcss/defaultTheme");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
   theme: {
     extend: {
       // see https://scottspence.com/posts/customising-fonts-in-tailwind-css-and-daisyui
@@ -46,5 +44,5 @@ module.exports = {
       "sunset",
     ],
   },
-  plugins: [typography, daisyui],
+  plugins: [require("@tailwindcss/typography"), require("daisyui")],
 };

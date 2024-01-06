@@ -1,5 +1,11 @@
 import { For, Match, Show } from "solid-js";
-import { type ProjectType, activeProjects, schoolProjects, sideProjects, thesisProjects } from "../../contents/";
+import {
+  type ProjectType,
+  activeProjects,
+  schoolProjects,
+  sideProjects,
+  thesisProjects,
+} from "../../contents";
 import Prefix from "../Prefix";
 import { challengeProjects } from "../../contents/projects/challenges";
 
@@ -30,7 +36,11 @@ export default function CommandProjects(props: { cmd: string }) {
   const selection = () => props.cmd.slice("projects ".length);
 
   return (
-    <Match when={props.cmd === "projects" || Object.keys(projects).includes(selection())}>
+    <Match
+      when={
+        props.cmd === "projects" || Object.keys(projects).includes(selection())
+      }
+    >
       <Prefix cmd={props.cmd} />
       <Show
         when={props.cmd === "projects"}
@@ -41,7 +51,10 @@ export default function CommandProjects(props: { cmd: string }) {
                 <br />
                 <span class="text-primary">{project.title}</span>
                 {" ("}
-                <a class="link link-hover text-success" href={project.githubURL}>
+                <a
+                  class="link link-hover text-success"
+                  href={project.githubURL}
+                >
                   code
                 </a>
                 <Show when={project.npm}>
@@ -70,7 +83,9 @@ export default function CommandProjects(props: { cmd: string }) {
           <For each={Object.entries(projects)}>
             {([category, { desc }]) => (
               <code>
-                <span class="text-secondary font-bold">{"\t" + category.padEnd(10, " ")}</span>
+                <span class="text-secondary font-bold">
+                  {"\t" + category.padEnd(10, " ")}
+                </span>
                 <span>{desc}</span>
                 <br />
               </code>

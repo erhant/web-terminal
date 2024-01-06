@@ -21,7 +21,9 @@ export default function CommandHelp(props: { cmd: string }) {
           {(help) => (
             <code>
               {"\n\t"}
-              <span class="text-accent font-bold">{help[0].padEnd(10, " ")}</span>
+              <span class="text-accent font-bold">
+                {help[0].padEnd(10, " ")}
+              </span>
               {help[1]}
             </code>
           )}

@@ -4,14 +4,29 @@ export const challengeProjects: ProjectType[] = [
   {
     title: "Cryptopals",
     githubURL: "https://github.com/erhant/cryptopals",
-    content: () => <p>Cryptopals challenges using Go.</p>,
+    content: () => (
+      <p>
+        <a class="link link-hover" href="https://cryptopals.com/" target="_blank">
+          Cryptopals
+        </a>{" "}
+        challenges using Go.
+      </p>
+    ),
     tech: ["go"],
   },
   {
     title: "Ethernaut & EVM Puzzles",
     githubURL: "https://github.com/erhant/ethernaut-evm-challenges",
     tech: ["solidity"],
-    content: () => <p>Solutions to various Ethernaut & EVM puzzles using Foundry.</p>,
+    content: () => (
+      <p>
+        Solutions to various{" "}
+        <a class="link link-hover" href="https://ethernaut.openzeppelin.com/" target="_blank">
+          Ethernaut
+        </a>{" "}
+        & EVM puzzles using Foundry.
+      </p>
+    ),
   },
   {
     title: "Advent of TypeScript 2023",
@@ -21,7 +36,7 @@ export const challengeProjects: ProjectType[] = [
     content: () => (
       <p>
         Solutions to{" "}
-        <a class="link" href="https://typehero.dev/aot-2023" target="_blank">
+        <a class="link link-hover" href="https://typehero.dev/aot-2023" target="_blank">
           Advent of TypeScript 2023
         </a>
         , with detailed walkthroughs.

@@ -3,14 +3,16 @@ import { themes } from "../../constants";
 import Prefix from "../Prefix";
 
 export default function CommandTheme(props: { cmd: string }) {
+  const selection = () => props.cmd.slice("theme ".length);
+
   return (
-    <Match when={props.cmd === "theme" || themes.includes(props.cmd.slice("theme ".length))}>
+    <Match when={props.cmd === "theme" || themes.includes(selection())}>
       <Prefix cmd={props.cmd} />
       <Show when={props.cmd === "theme"}>
         <pre>
           <code>{"To change the theme, type:\n\n\ttheme <name>\n\n"}</code>
           <code>{"Available themes:\n"}</code>
-          <For each={themes}>{(theme) => <code>{"\n\t" + theme}</code>}</For>
+          <For each={themes}>{(theme) => <span class="text-secondary font-bold">{"\n\t" + theme}</span>}</For>
           {"\n\n"}
         </pre>
       </Show>

@@ -1,4 +1,6 @@
-# Terminal
+# Web Terminal
+
+A terminal-like portfolio page, so that I don't worry about my bad UI designs.
 
 ## Usage
 

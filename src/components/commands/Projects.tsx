@@ -1,78 +1,84 @@
 import { For, Match, Show } from "solid-js";
 import { type ProjectType, activeProjects, schoolProjects, sideProjects, thesisProjects } from "../../contents/";
 import Prefix from "../Prefix";
+import { challengeProjects } from "../../contents/projects/challenges";
 
-const projectsByCategory: Record<string, { title: string; projects: ProjectType[]; desc: string }> = {
+const projects: Record<string, { projects: ProjectType[]; desc: string }> = {
   active: {
-    title: "Active Projects",
     projects: activeProjects,
-    desc: "Currently maintained & active projects.",
+    desc: "Actively maintained projects, mostly on NPM.",
   },
   side: {
-    title: "Side Projects",
     projects: sideProjects,
     desc: "Endless pit of side projects.",
   },
   thesis: {
-    title: "Thesis Projects",
     projects: thesisProjects,
     desc: "My B.Sc. and M.Sc. thesis projects.",
   },
   school: {
-    title: "School Projects",
     projects: schoolProjects,
     desc: "Projects from the school, homeworks & term projects and such.",
+  },
+  challenge: {
+    projects: challengeProjects,
+    desc: "CTFs & puzzles solutions.",
   },
 };
 
 export default function CommandProjects(props: { cmd: string }) {
+  const selection = () => props.cmd.slice("projects ".length);
+
   return (
-    <Match
-      when={props.cmd === "projects" || Object.keys(projectsByCategory).includes(props.cmd.slice("projects ".length))}
-    >
+    <Match when={props.cmd === "projects" || Object.keys(projects).includes(selection())}>
       <Prefix cmd={props.cmd} />
+      <Show
+        when={props.cmd === "projects"}
+        fallback={
+          <For each={projects[selection()].projects || []}>
+            {(project) => (
+              <code>
+                <br />
+                <span class="text-primary">{project.title}</span>
+                {" ("}
+                <a class="link link-hover text-success" href={project.githubURL}>
+                  code
+                </a>
+                <Show when={project.npm}>
+                  {" | "}
+                  <a class="link link-hover text-error" href={project.npm}>
+                    npm
+                  </a>
+                </Show>
+                <Show when={project.webURL}>
+                  {" | "}
+                  <a class="link link-hover text-info" href={project.webURL}>
+                    web
+                  </a>
+                </Show>
+                {")"}
 
-      <pre>
-        {"\n\n"}
-        <For each={Object.values(projectsByCategory)}>
-          {({ title, projects }) => (
-            <code>
-              {"\t"}
-              <span class="text-secondary font-bold underline">{title.padEnd(10, " ")}</span>
-              {"\n"}
-
-              <For each={projects}>
-                {(project) => (
-                  <code>
-                    {"\n\t\t"}
-                    <span class="text-primary">{project.title}</span>
-                    {" ("}
-                    <a class="link link-hover text-success" href={project.githubURL}>
-                      code
-                    </a>
-                    <Show when={project.npm}>
-                      {" | "}
-                      <a class="link link-hover text-error" href={project.npm}>
-                        npm
-                      </a>
-                    </Show>
-                    <Show when={project.webURL}>
-                      {" | "}
-                      <a class="link link-hover text-info" href={project.webURL}>
-                        web
-                      </a>
-                    </Show>
-                    {")"}
-
-                    <pre class="text-wrap">{project.content()}</pre>
-                  </code>
-                )}
-              </For>
-              {"\n"}
-            </code>
-          )}
-        </For>
-      </pre>
+                <pre class="text-wrap">{project.content()}</pre>
+              </code>
+            )}
+          </For>
+        }
+      >
+        <pre>
+          <code>{"To view projects, type:\n\n\tprojects <category>\n\n"}</code>
+          <code>{"Available categories:\n\n"}</code>
+          <For each={Object.entries(projects)}>
+            {([category, { desc }]) => (
+              <code>
+                <span class="text-secondary font-bold">{"\t" + category.padEnd(10, " ")}</span>
+                <span>{desc}</span>
+                <br />
+              </code>
+            )}
+          </For>
+        </pre>
+      </Show>
+      <br />
     </Match>
   );
 }

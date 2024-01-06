@@ -36,7 +36,7 @@ export const activeProjects: ProjectType[] = [
     tech: ["typescript"],
   },
   {
-    title: " User Embeddings SDK",
+    title: "User Embeddings SDK",
     githubURL: "https://github.com/firstbatchxyz/firstbatch-sdk-ts",
     npm: "https://npmjs.com/package/firstbatch",
     content: () => <p>User Embeddings SDK, developed by {FirstBatch()}.</p>,

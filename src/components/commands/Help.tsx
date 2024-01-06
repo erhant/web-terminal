@@ -1,16 +1,15 @@
 import { For, Match } from "solid-js";
-import { allCommands } from "../../constants";
 import Prefix from "../Prefix";
 
-const helps: Record<Exclude<(typeof allCommands)[number], "">, string> = {
+const helps = {
   about: "About me.",
   clear: "Clear the terminal",
   help: "Print this help message.",
-  cv: "Open resume (curriculum vitae).",
+  date: "Print todays date & time.",
+  cv: "Open my resume.",
   projects: "All of my projects.",
   papers: "My publications.",
   theme: "List all themes & change theme.",
-  connect: "Connect with me.",
 };
 
 export default function CommandHelp(props: { cmd: string }) {

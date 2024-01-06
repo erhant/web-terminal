@@ -4,15 +4,17 @@ import { themeChange } from "theme-change";
 import { themes } from "./constants";
 
 import Input from "./components/Input";
+import Unknown from "./components/Unknown";
+
 import CommandAbout from "./components/commands/About";
 import CommandHelp from "./components/commands/Help";
-import CommandConnect from "./components/commands/Connect";
 import CommandProjects from "./components/commands/Projects";
 import CommandPapers from "./components/commands/Papers";
 import CommandTheme from "./components/commands/Theme";
 import CommandEmpty from "./components/commands/Empty";
-import CommandCV from "./components/commands/Cv";
-import CommandUnknown from "./components/commands/Unknown";
+import CommandCV from "./components/commands/CV";
+import CommandDate from "./components/commands/Date";
+import CommandGehog from "./components/commands/Gehog";
 
 export default function App() {
   const [commands, setCommands] = createSignal<string[]>(["help"]);
@@ -63,15 +65,16 @@ export default function App() {
         {/* print commands */}
         <For each={commands()}>
           {(command) => (
-            <Switch fallback={<CommandUnknown cmd={command} />}>
-              <CommandAbout cmd={command} />
-              <CommandConnect cmd={command} />
-              <CommandHelp cmd={command} />
+            <Switch fallback={<Unknown cmd={command} />}>
               <CommandEmpty cmd={command} />
-              <CommandCV cmd={command} />
-              <CommandPapers cmd={command} />
-              <CommandProjects cmd={command} />
+              <CommandHelp cmd={command} />
+              <CommandAbout cmd={command} />
               <CommandTheme cmd={command} />
+              <CommandCV cmd={command} />
+              <CommandProjects cmd={command} />
+              <CommandPapers cmd={command} />
+              <CommandDate cmd={command} />
+              <CommandGehog cmd={command} />
             </Switch>
           )}
         </For>

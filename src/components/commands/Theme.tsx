@@ -9,13 +9,13 @@ export default function CommandTheme(props: { cmd: string }) {
     <Match when={props.cmd === "theme" || themes.includes(selection())}>
       <Prefix cmd={props.cmd} />
       <Show when={props.cmd === "theme"}>
-        <pre>
-          <code>{"To change the theme, type:\n\n\ttheme <name>\n\n"}</code>
-          <code>{"Available themes:"}</code>
+        <div>
+          <p>{"To change the theme, type:\n\n\ttheme <name>\n\n"}</p>
+          <p>Available themes:</p>
           <br />
-          <code class="text-secondary font-bold text-wrap">{themes.join(" ")}</code>
-          {"\n\n"}
-        </pre>
+          <p class="text-accent font-bold">{themes.join(" ")}</p>
+        </div>
+        <br />
       </Show>
     </Match>
   );

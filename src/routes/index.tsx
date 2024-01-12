@@ -63,7 +63,7 @@ export default function App() {
       onClick={() => inputRef && inputRef.focus()}
       ref={(ref) => (mainRef = ref)}
     >
-      <div class="p-2 whitespace-pre-wrap text-wrap">
+      <div class="p-2 whitespace-pre-wrap">
         {/* print commands */}
         <For each={commands()}>
           {(command) => (

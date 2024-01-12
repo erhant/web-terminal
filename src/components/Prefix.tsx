@@ -4,7 +4,7 @@ export default function Prefix(props: { fail?: boolean; path?: string; cmd?: str
   const promptColor = () => (props.fail ? "text-error" : "text-success");
 
   return (
-    <code>
+    <p>
       <span class="text-accent">guest</span>
       <span>{"@"}</span>
       <span class="text-primary">erhant.me</span>
@@ -15,6 +15,6 @@ export default function Prefix(props: { fail?: boolean; path?: string; cmd?: str
         <span>{props.cmd}</span>
         {"\n"}
       </Show>
-    </code>
+    </p>
   );
 }

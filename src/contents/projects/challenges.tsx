@@ -29,6 +29,19 @@ export const challengeProjects: ProjectType[] = [
     ),
   },
   {
+    title: "Huff Puzzles",
+    githubURL: "https://github.com/erhant/huff-puzzles",
+    tech: ["solidity"],
+    content: () => (
+      <p>
+        Solutions to{" "}
+        <a class="link link-hover" href="https://github.com/RareSkills/huff-puzzles" target="_blank">
+          Huff Puzzles by RareSkills
+        </a>
+      </p>
+    ),
+  },
+  {
     title: "Advent of TypeScript 2023",
     githubURL: "https://github.com/erhant/aot-2023",
     webURL: "https://dev.to/erhant/series/25850",

@@ -5,8 +5,7 @@ export default function CommandDate(props: { cmd: string }) {
   return (
     <Match when={props.cmd === "date"}>
       <Prefix cmd={props.cmd} />
-      <code>{Date()}</code>
-      <br />
+      <p>{Date()}</p>
     </Match>
   );
 }

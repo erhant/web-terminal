@@ -6,10 +6,10 @@ export default function CommandPapers(props: { cmd: string }) {
   return (
     <Match when={props.cmd === "papers"}>
       <Prefix cmd={props.cmd} />
-      <pre>
+      <div>
         <For each={publications}>
           {(paper) => (
-            <code class="text-wrap">
+            <p class="text-wrap">
               {"\n"}
               <span class="text-primary font-medium">{paper.title}</span>
               {" ("}
@@ -23,11 +23,11 @@ export default function CommandPapers(props: { cmd: string }) {
               </a>
               {")"}
               {paper.content()}
-            </code>
+            </p>
           )}
         </For>
-        {"\n\n"}
-      </pre>
+        <br />
+      </div>
     </Match>
   );
 }

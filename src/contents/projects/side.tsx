@@ -15,6 +15,18 @@ export const sideProjects: ProjectType[] = [
     tech: ["markdown"],
   },
   {
+    title: "zkBrainfuck",
+    githubURL: "https://github.com/erhant/zkbrainfuck",
+    tech: ["go", "circom"],
+    content: () => <p>A Brainfuck zkVM to prove correct execution of a Brainfuck program with secret inputs.</p>,
+  },
+  {
+    title: "Halo2 VectorDB",
+    githubURL: "https://github.com/erhant/halo2-vectordb",
+    tech: ["rust"],
+    content: () => <p>Verifiable vector similarity queries with Halo2.</p>,
+  },
+  {
     title: "Blockchatting",
     githubURL: "https://github.com/erhant/blockchatting",
     webURL: "https://blockchatting.vercel.app/",

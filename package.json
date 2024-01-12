@@ -19,12 +19,9 @@
     "vite": "^4.4.9"
   },
   "dependencies": {
-    "@fontsource/ibm-plex-mono": "^5.0.8",
-    "@pinecone-database/pinecone": "1.0.1",
+    "@fontsource/fira-code": "^5.0.16",
     "@solidjs/meta": "^0.29.1",
     "@solidjs/router": "^0.8.3",
-    "firstbatch": "^0.1.5",
-    "langchain": "^0.0.200",
     "solid-js": "^1.8.5",
     "solid-start": "^0.3.10",
     "solid-start-vercel": "^0.3.10",
